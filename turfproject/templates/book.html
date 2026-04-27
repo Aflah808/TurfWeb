@@ -47,79 +47,81 @@
             display: flex;
             font-size: xx-large;
         }
+
         /* Container styling to center the form on the page */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-form {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-}
+        form {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
 
-/* Styling inputs, select, and buttons */
-input[type="text"],
-input[type="date"],
-select {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 8px 0 20px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-    outline: none;
-}
+        /* Styling inputs, select, and buttons */
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 8px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            /* Ensures padding doesn't affect width */
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
 
-/* Focus effect for a "live" feel */
-input:focus, 
-select:focus {
-    border-color: #4A90E2;
-    box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
-}
+        /* Focus effect for a "live" feel */
+        input:focus,
+        select:focus {
+            border-color: #4A90E2;
+            box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+        }
 
-/* Button styling */
-button[type="submit"] {
-    width: 100%;
-    background-color: #4A90E2;
-    color: white;
-    padding: 14px 20px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-}
+        /* Button styling */
+        button[type="submit"] {
+            width: 100%;
+            background-color: #4A90E2;
+            color: white;
+            padding: 14px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
 
-button[type="submit"]:hover {
-    background-color: #357ABD;
-}
+        button[type="submit"]:hover {
+            background-color: #357ABD;
+        }
 
-button[type="submit"]:active {
-    transform: scale(0.98);
-}
+        button[type="submit"]:active {
+            transform: scale(0.98);
+        }
 
-/* Responsive tweak for smaller screens */
-@media (max-width: 480px) {
-    form {
-        padding: 20px;
-        margin: 20px;
-    }
-}
+        /* Responsive tweak for smaller screens */
+        @media (max-width: 480px) {
+            form {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -170,11 +172,11 @@ button[type="submit"]:active {
                 <th>Timing</th>
             </tr>
 
-            {% for i in bookings %}
+            {% for i in slots %}
             <tr>
-                <td>{{ i.name }}</td>
                 <td>{{ i.date }}</td>
                 <td>{{ i.time }}</td>
+                <td>{{ i.is_available }}</td>
             </tr>
             {% empty %}
             <tr>
@@ -182,29 +184,7 @@ button[type="submit"]:active {
             </tr>
             {% endfor %}
 
-        </table></div>
-        <div class="fom"><<form method="POST">
-    {% csrf_token %}
-    <label for="name">Full Name</label>
-    <input type="text" name="name" id="name" placeholder="Enter your name" required>
-
-    <label for="contact">Contact Number</label>
-    <input type="text" name="contact" id="contact" placeholder="Enter contact" required>
-
-    <label for="date">Select Date</label>
-    <input type="date" name="date" id="date" required>
-
-    <label for="time">Preferred Time</label>
-    <select name="time" id="time" required>
-        <option value="">Select Time Slot</option>
-        <option>6:00 AM – 4:00 PM</option>
-        <option>4:00 PM – 7:00 PM</option>
-        <option>7:00 PM – 10:00 PM</option>
-        <option>10:00 PM – 12:00 AM</option>
-    </select>
-
-    <button type="submit">Book Slot</button>
-</form>
+        </table>
     </div>
 
 </body>
