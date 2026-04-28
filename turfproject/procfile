@@ -1,1 +1,1 @@
-web: gunicorn turfproject.wsgi
+web: gunicorn turfapp.wsgi
