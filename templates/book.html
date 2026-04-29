@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turf Booking Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --accent-color: #2ECC71;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: #f8f9fa;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url("{% static 'images/turfmain3.jpeg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Glassmorphism Card Style */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Modern Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .price-tag {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+
+        .status-booked {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .card { padding: 15px; }
+            td, th { padding: 10px; font-size: 0.9rem; }
+        }
+        /* Add this to your <style> section */
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #357ABD;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.6);
+            color: white;
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Turf Booking Portal</h1>
+
+        <div class="card">
+            <h2>Active Hours & Rates</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time Slot</th>
+                        <th>Price (Per Hour)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>06:00 AM – 04:00 PM</td>
+                        <td class="price-tag">₹600</td>
+                    </tr>
+                    <tr>
+                        <td>04:00 PM – 07:00 PM</td>
+                        <td class="price-tag">₹800</td>
+                    </tr>
+                    <tr>
+                        <td>07:00 PM – 10:00 PM</td>
+                        <td class="price-tag">₹1000</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 PM – 12:00 AM</td>
+                        <td class="price-tag">₹700</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Current Bookings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Timing</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in slots %}
+                    <tr>
+                        <td>{{ i.date }}</td>
+                        <td>{{ i.time }}</td>
+                        <td>
+                            {% if i.is_available %}
+                                <span class="status-badge">Available</span>
+                            {% else %}
+                                <span class="status-badge status-booked">Booked</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" style="text-align: center; opacity: 0.6;">No slots scheduled for today.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="cta-container">
+            <a href="{% url 'book_slot' %}" class="btn-primary">Book a Slot Now</a>
+        </div>
+    </div>
+
+</body>
+</html>

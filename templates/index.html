@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTurf | Iron Pulse Arena</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background-image: url("{% static 'images/turfmain2.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #cccccc;
+            color: aliceblue;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;                         
+            border-bottom: 1px solid #e4e3e9bf;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar {
+            background-color: #2540729f;
+            margin: 20px 0 0 0;
+            padding: 15px 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: aliceblue;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #22c55e;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        .mainhd,
+        .about,
+        .view,
+        h1,
+        h2 {
+            color: rgb(230, 236, 241);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .aboutpara,
+        .sec3,
+        .sec5 {
+            color: aliceblue;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: 2px solid #22c55e;
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: #22c55e;
+            color: black;
+        }
+
+        .Pricing {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #334155;
+            text-align: center;
+        }
+
+        th {
+            background: #22c55e;
+            color: black;
+        }
+
+        tr:hover {
+            background: #334155;
+        }
+
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+
+        .contact-info {
+            margin-top: 30px;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .hover-container {
+            width: 300px;
+            overflow: hidden;
+        }
+
+        .hover-image {
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .hover-image:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'images/turflogo.png' %}" alt="logo" style="height: 50px; vertical-align: middle;">
+        <span style="letter-spacing: 2px; font-weight: bolder; color: rgba(240, 243, 249, 0.791); font-size: 24px;">IRON
+            PULSE ARENA</span>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#About-section">About</a></li>
+                <li><a href="#Contact-section">Contact</a></li>
+                <li><a href="#Price-section">Pricing</a></li>
+                <li><a href="{% url 'booking' %}">BookNow</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li><a href="{% url 'history' %}">Booking History</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="About-section">
+            <h1 style="color: rgb(20, 20, 177);">IronPulse Arena</h1>
+            <img class="hover-image" src="{% static 'images/turf11.png' %}" alt="Arena View">
+            <h2 class="about">About</h2>
+            <p class="aboutpara">
+                IronPulse Arena isn’t just another turf—it’s built for intensity. Designed for players who actually want
+                to feel the game, not just play it casually, this arena combines precision engineering with raw
+                atmosphere. Every inch of the surface is optimized for grip, speed, and control, so whether you're
+                sprinting, cutting, or striking, the turf responds instantly.
+            </p>
+            <p class="aboutpara">
+                Under the floodlights, IronPulse transforms. The shadows sharpen, the energy rises, and the game feels
+                cinematic. High-tension netting, reinforced boundaries, and professional-grade turf ensure uninterrupted
+                play, while the layout keeps the action fast and aggressive.
+            </p>
+            <a href="#" class="btn-outline">Read More</a>
+        </section>
+
+        <section id="facilities">
+            <h1>Facilities</h1>
+            <div>
+                <h2 class="view">Viewing Area</h2>
+                <img src="{% static 'images/turfviewt.png' %}" alt="turfseat">
+                <p class="sec3">The viewing gallery is designed for uninterrupted focus on the game. Positioned
+                    alongside the pitch, it offers a clear, close-angle view that keeps spectators connected to every
+                    pass, tackle, and shot. The seating is minimal but intentional—built for comfort during long
+                    matches.</p>
+            </div>
+            <div>
+                <h2 class="view">Dressing Area</h2>
+                <img src="{% static 'images/turfroom.png' %}" alt="turfroom">
+                <p class="sec5">The dressing area keeps things sharp and functional. With a clean, modern finish and
+                    controlled lighting, it’s built to get players in and out efficiently—no clutter, no wasted space.
+                    The layout allows for quick gear changes and pre-match prep without chaos.</p>
+            </div>
+        </section>
+
+
+
+        <section id="Price-section" class="Pricing">
+            <h1>IronPulse Arena Pricing</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time Slot</th>
+                        <th>Price (Per Hour)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>6:00 AM – 4:00 PM</td>
+                        <td>₹600</td>
+                    </tr>
+                    <tr>
+                        <td>4:00 PM – 7:00 PM</td>
+                        <td>₹800</td>
+                    </tr>
+                    <tr>
+                        <td>7:00 PM – 10:00 PM</td>
+                        <td>₹1000</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 PM – 12:00 AM</td>
+                        <td>₹700</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note">
+                Weekend prices may vary. Contact for tournament bookings.
+            </div>
+        </section>
+    </main>
+
+    <footer id="Contact-section">
+        <h2>Get in Touch</h2>
+        <p style="max-width:600px; margin:auto; color:#cbd5f5;">
+            Have questions about bookings, availability, or tournaments? Reach out directly—we keep it simple and
+            responsive.
+        </p>
+        <div class="contact-info">
+            📞 <strong>Call / WhatsApp:</strong> +91 98765 43210 <br>
+            📧 <strong>Email:</strong> contact@ironpulsearena.com <br>
+            📍 <strong>Location:</strong> IronPulse Arena, Calicut, Kerala
+        </div>
+        <p style="margin-top:20px; font-size:12px; color:#94a3b8;">
+            * We usually respond within a few hours. For faster booking, call or WhatsApp directly.
+        </p>
+    </footer>
+</body>
+
+</html>
