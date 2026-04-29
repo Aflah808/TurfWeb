@@ -34,7 +34,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'turfproject.urls'
+ROOT_URLCONF = 'turfproject.turfproject.urls'
 
 TEMPLATES = [
     {
